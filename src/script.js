@@ -19,6 +19,14 @@ const renderList = (list) => {
     // on vide la liste pour re-afficher les items de zero, sinon on aurait des doublons
     listContainer.innerHTML = '';
 
+    list.forEach((itemText) => {
+        // creer un element li
+        const li = createItem(itemText);
+
+        // l'ajouter comme un enfant de listContainer (qui sera donc le parent)
+        listContainer.appendChild(li);
+    });
+
     // pour chaque item dans la liste:
         // creer un element li
         // l'ajouter comme un enfant de listContainer (qui sera donc le parent)
@@ -34,6 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const itemText = input.value;
 
             // On ajoute le texte a la liste de todo
+            list.push(itemText);
 
             // On affiche la liste dans le DOM
             renderList(list);
